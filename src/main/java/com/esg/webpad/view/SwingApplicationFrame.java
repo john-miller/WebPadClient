@@ -36,7 +36,7 @@ public enum SwingApplicationFrame implements ApplicationFrame<JPanel> {
 		frame = new JFrame("ESG Notepad");
 		pnlMain.add(menuBar, BorderLayout.NORTH);
 		frame.add(pnlMain);
-		frame.setIconImage(new ImageIcon(SwingApplicationFrame.class.getResource("/images/icon.png")).getImage());
+		frame.setIconImage(new ImageIcon(SwingApplicationFrame.class.getResource("/images/icon-web.png")).getImage());
 		try {
 			UIManager.setLookAndFeel(settingsService.getSetting(Setting.SWING_STYLE));
 			SwingUtilities.updateComponentTreeUI(frame);

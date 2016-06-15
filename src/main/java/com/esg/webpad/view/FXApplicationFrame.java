@@ -84,7 +84,7 @@ public enum FXApplicationFrame implements ApplicationFrame<Pane> {
 				URL style = FXApplicationFrame.class.getResource(settingsService.getSetting(Setting.JAVAFX_STYLE));
 				if(style != null)
 					scene.getStylesheets().add(style.toExternalForm());
-				primaryStage.getIcons().add(new Image(FXApplicationFrame.class.getResourceAsStream("/images/icon.png")));
+				primaryStage.getIcons().add(new Image(FXApplicationFrame.class.getResourceAsStream("/images/icon-web.png")));
 				primaryStage.setTitle("ESG Notepad");
 				primaryStage.setScene(scene);
 				primaryStage.show();
