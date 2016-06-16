@@ -4,7 +4,7 @@ import com.esg.webpad.service.SettingsService;
 import com.esg.webpad.service.SettingsServiceImpl;
 import com.esg.webpad.service.SettingsService.Setting;
 
-public enum SwingMenuBarItem implements MenuBarItem {
+public enum SwingMenuBarItem implements SelectableMenuBarItem {
 	
 	INSTANCE;
 
@@ -23,6 +23,11 @@ public enum SwingMenuBarItem implements MenuBarItem {
 	@Override
 	public void onAction() {
 		settingsService.setSetting(Setting.UI_FRAMEWORK, "Swing");
+	}
+
+	@Override
+	public boolean isSelected() {
+		return settingsService.getSetting(Setting.UI_FRAMEWORK).equals("Swing");
 	}
 
 }

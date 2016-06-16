@@ -4,7 +4,7 @@ import com.esg.webpad.service.SettingsService;
 import com.esg.webpad.service.SettingsServiceImpl;
 import com.esg.webpad.service.SettingsService.Setting;
 
-public enum JavaFXMenuBarItem implements MenuBarItem {
+public enum JavaFXMenuBarItem implements SelectableMenuBarItem {
 	
 	INSTANCE;
 
@@ -23,6 +23,11 @@ public enum JavaFXMenuBarItem implements MenuBarItem {
 	@Override
 	public void onAction() {
 		settingsService.setSetting(Setting.UI_FRAMEWORK, "JavaFX");
+	}
+
+	@Override
+	public boolean isSelected() {
+		return settingsService.getSetting(Setting.UI_FRAMEWORK).equals("JavaFX");
 	}
 
 }

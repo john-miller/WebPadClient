@@ -2,7 +2,7 @@ package com.esg.webpad.menu;
 
 import org.apache.log4j.Logger;
 
-public enum PushMenuBarItem implements MenuBarItem {
+public enum PushMenuBarItem implements MenuBarItem, IconableItem {
 	
 	INSTANCE;
 	
@@ -25,6 +25,11 @@ public enum PushMenuBarItem implements MenuBarItem {
 	@Override
 	public void onAction() {
 		logger.info("User chose to push to web");
+	}
+	
+	@Override
+	public String getImageLocation() {
+		return "/images/icons/cloud-computing-1.png";
 	}
 
 }

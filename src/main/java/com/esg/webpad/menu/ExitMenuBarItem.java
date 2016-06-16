@@ -2,7 +2,7 @@ package com.esg.webpad.menu;
 
 import org.apache.log4j.Logger;
 
-public enum ExitMenuBarItem implements MenuBarItem {
+public enum ExitMenuBarItem implements MenuBarItem, IconableItem {
 	
 	INSTANCE;
 	
@@ -26,6 +26,11 @@ public enum ExitMenuBarItem implements MenuBarItem {
 	public void onAction() {
 		logger.info("User exited program");
 		System.exit(0);
+	}
+
+	@Override
+	public String getImageLocation() {
+		return "/images/icons/log-out.png";
 	}
 
 }

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.esg.webpad.controller.NewFileController;
 
-public enum NewMenuBarItem implements MenuBarItem {
+public enum NewMenuBarItem implements MenuBarItem, IconableItem {
 	
 	INSTANCE;
 
@@ -28,6 +28,11 @@ public enum NewMenuBarItem implements MenuBarItem {
 	@Override
 	public MenuBarItem[] getChildren() {
 		return new MenuBarItem[]{};
+	}
+
+	@Override
+	public String getImageLocation() {
+		return "/images/icons/file.png";
 	}
 
 }
