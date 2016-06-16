@@ -11,8 +11,8 @@ import com.esg.webpad.view.FXContentInjector;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.HTMLEditor;
 
 public enum FXEditFileForm implements EditFileForm {
 	
@@ -22,12 +22,12 @@ public enum FXEditFileForm implements EditFileForm {
 	
 	private SimpleStringProperty propName = new SimpleStringProperty();
 	private SimpleStringProperty propDescription = new SimpleStringProperty();
-	private SimpleStringProperty propContent = new SimpleStringProperty();
+	
 	
 	private Pane pane;
 	
 	@FXML
-	private TextArea txtContent;
+	private HTMLEditor txtContent;
 	
 	private FXEditFileForm() {
 		logger.info("Creating edit file form");
@@ -35,7 +35,6 @@ public enum FXEditFileForm implements EditFileForm {
 			FXMLLoader loader = new FXMLLoader(FXApplicationFrame.class.getResource("/fxml/edit-file-form.fxml"));
 			loader.setController(this);
 			pane = loader.load();
-			txtContent.textProperty().bindBidirectional(propContent);
 		} catch (IOException e) {
 			logger.error("Could not load FXML document", e);
 		} catch(IllegalStateException e) {
@@ -52,7 +51,7 @@ public enum FXEditFileForm implements EditFileForm {
 	public void setFile(NotePadFile file) {
 		propName.set(file.getName());
 		propDescription.set(file.getDescription());
-		propContent.set(file.getContent());
+		txtContent.setHtmlText(file.getContent());
 	}
 
 }

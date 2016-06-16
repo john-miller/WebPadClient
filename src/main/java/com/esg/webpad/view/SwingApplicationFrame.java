@@ -1,10 +1,12 @@
 package com.esg.webpad.view;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -16,10 +18,12 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.log4j.Logger;
 
+import com.esg.webpad.menu.IconableItem;
 import com.esg.webpad.menu.MenuBarItem;
+import com.esg.webpad.menu.SelectableMenuBarItem;
 import com.esg.webpad.service.SettingsService;
-import com.esg.webpad.service.SettingsServiceImpl;
 import com.esg.webpad.service.SettingsService.Setting;
+import com.esg.webpad.service.SettingsServiceImpl;
 
 
 public enum SwingApplicationFrame implements ApplicationFrame<JPanel> {
@@ -74,10 +78,24 @@ public enum SwingApplicationFrame implements ApplicationFrame<JPanel> {
 			JMenu menu = new JMenu(item.getDisplayName());
 			for(MenuBarItem childItem : item.getChildren())
 				menu.add(addMenuBarItems(childItem));
+			
+			if(item instanceof IconableItem)
+				applyIcon(menu, (IconableItem) item);
+			
 			return menu;
 		} else {
 			
-			JMenuItem menu = new JMenuItem(item.getDisplayName());
+			JMenuItem menu;
+			
+			if(item instanceof SelectableMenuBarItem) {
+				menu = new JCheckBoxMenuItem(item.getDisplayName());
+				menu.setSelected(((SelectableMenuBarItem) item).isSelected());
+			} else {
+				menu = new JMenuItem(item.getDisplayName());
+			}
+			
+			if(item instanceof IconableItem)
+				applyIcon(menu, (IconableItem) item);
 			
 			/* When menu item it clicked the item action will be triggered */
 			menu.addActionListener(new ActionListener() {
@@ -89,6 +107,12 @@ public enum SwingApplicationFrame implements ApplicationFrame<JPanel> {
 				
 			return menu;
 		}
+	}
+	
+	private void applyIcon(JMenuItem menu, IconableItem iconable) {
+		ImageIcon icon = new ImageIcon(SwingApplicationFrame.class.getResource(iconable.getImageLocation()));
+		Image img = icon.getImage();
+		menu.setIcon(new ImageIcon(img.getScaledInstance(16, 16, java.awt.Image.SCALE_SMOOTH)));
 	}
 	
 

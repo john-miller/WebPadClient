@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
+import com.esg.webpad.controller.EditFileController;
+import com.esg.webpad.file.NotePadFile;
 import com.esg.webpad.view.FXApplicationFrame;
 import com.esg.webpad.view.FXContentInjector;
 
@@ -40,6 +42,11 @@ public enum FXNewFileForm implements NewFileForm {
 	@FXML
 	public void create() {
 		logger.info("User chose to create new file");
+		NotePadFile file = new NotePadFile();
+		file.setName("Test");
+		file.setDescription("Description");
+		file.setContent("Test <b>Content</b>");
+		EditFileController.INSTANCE.editFile(file);
 	}
 	
 	@FXML

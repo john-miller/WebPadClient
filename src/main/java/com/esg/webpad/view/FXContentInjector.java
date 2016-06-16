@@ -43,8 +43,8 @@ public enum FXContentInjector implements ContentInjector<Pane> {
 		transitionOut.setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				in.prefWidthProperty().bind(parentPane.widthProperty());
-				in.prefHeightProperty().bind(parentPane.heightProperty().subtract(parentPane.getTop().getBoundsInParent().getHeight()));
+//				in.prefWidthProperty().bind(parentPane.widthProperty());
+//				in.prefHeightProperty().bind(parentPane.heightProperty().subtract(parentPane.getTop().getBoundsInLocal().getHeight()));
 				in.setOpacity(0);
 				parentPane.setCenter(in);
 				FadeTransition transitionIn = new FadeTransition(Duration.millis(transitionTimeMillis), in);
