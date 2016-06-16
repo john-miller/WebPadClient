@@ -5,20 +5,24 @@ import java.net.URL;
 
 import org.apache.log4j.Logger;
 
+import com.esg.webpad.menu.IconableItem;
 import com.esg.webpad.menu.MenuBarItem;
+import com.esg.webpad.menu.SelectableMenuBarItem;
 import com.esg.webpad.service.SettingsService;
-import com.esg.webpad.service.SettingsServiceImpl;
 import com.esg.webpad.service.SettingsService.Setting;
+import com.esg.webpad.service.SettingsServiceImpl;
 import com.sun.javafx.application.PlatformImpl;
 import com.sun.javafx.application.PlatformImpl.FinishListener;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -87,6 +91,8 @@ public enum FXApplicationFrame implements ApplicationFrame<Pane> {
 				primaryStage.getIcons().add(new Image(FXApplicationFrame.class.getResourceAsStream("/images/icon-web.png")));
 				primaryStage.setTitle("ESG Notepad");
 				primaryStage.setScene(scene);
+				primaryStage.setWidth(650);
+				primaryStage.setHeight(650);
 				primaryStage.show();
 			}
 		});
@@ -98,6 +104,7 @@ public enum FXApplicationFrame implements ApplicationFrame<Pane> {
 
 	@Override
 	public void setMenuBarItems(MenuBarItem... items) {
+		menuBar.getMenus().removeAll(menuBar.getMenus());
 		for(MenuBarItem item : items) {
 			menuBar.getMenus().add((Menu) addMenuBarItems(item));
 		}
@@ -109,16 +116,44 @@ public enum FXApplicationFrame implements ApplicationFrame<Pane> {
 			Menu menu = new Menu(item.getDisplayName());
 			for(MenuBarItem childItem : item.getChildren())
 				menu.getItems().add(addMenuBarItems(childItem));
+			
+			if(item instanceof IconableItem)
+				applyIcon(menu, (IconableItem) item);
+			
 			return menu;
 		} else {
 			
-			MenuItem menu = new MenuItem(item.getDisplayName());
+			MenuItem menu;
+			
+			if(item instanceof SelectableMenuBarItem) {
+				CheckMenuItem check = new CheckMenuItem(item.getDisplayName());
+				check.setSelected(((SelectableMenuBarItem) item).isSelected());
+				menu = check;
+			} else {
+				menu = new MenuItem(item.getDisplayName());
+			}
+			
+			if(item instanceof IconableItem)
+				applyIcon(menu, (IconableItem) item);
 			
 			/* When menu item it clicked the item action will be triggered */
 			menu.setOnAction((event) -> {
 				item.onAction();
 			});
+			
 			return menu;
+		}
+	}
+	
+	private void applyIcon(MenuItem node, IconableItem iconableItem) {
+		try {
+			Image image = new Image(iconableItem.getImageLocation());
+			ImageView imageView = new ImageView(image);
+			imageView.setFitWidth(16);
+			imageView.setFitHeight(16);
+			node.setGraphic(imageView);
+		} catch(IllegalArgumentException e) {
+			logger.error(e);
 		}
 	}
 	
