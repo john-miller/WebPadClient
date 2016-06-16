@@ -17,38 +17,64 @@ import com.esg.webpad.view.FXApplicationFrame;
  * Created on Jun 15, 2016 11:33:10 AM
  * @author Jonathan Miller
  */
-public enum FXStyle implements Style {
+public enum FXStyle  {
 	
-	BLUE("Blue", "/css/blue.css"),
-	RED("Red", "/css/red.css");
+	INSTANCE;
+
+	private Style blue = new Style() {
+		private String name = "Blue";
+		private String location = "/css/blue.css";
+		@Override
+		public String getName() {
+			return name;
+		}
+		@Override
+		public void apply() {
+			logger.info("Applying " + name + " style");
+			
+			FXApplicationFrame.INSTANCE.getContainer()
+				.getScene().getStylesheets().removeAll(FXApplicationFrame.INSTANCE.getContainer().getScene().getStylesheets());
+			
+			FXApplicationFrame.INSTANCE.getContainer().getScene().getStylesheets().add(location);
+			
+			settingsService.setSetting(Setting.JAVAFX_STYLE, location);
+		}
+	};
 	
-	private String name;
-	private String location;
+	private Style red = new Style() {
+		private String name = "Red";
+		private String location = "/css/red.css";
+		@Override
+		public String getName() {
+			return name;
+		}
+		@Override
+		public void apply() {
+			logger.info("Applying " + name + " style");
+			
+			FXApplicationFrame.INSTANCE.getContainer()
+				.getScene().getStylesheets().removeAll(FXApplicationFrame.INSTANCE.getContainer().getScene().getStylesheets());
+			
+			FXApplicationFrame.INSTANCE.getContainer().getScene().getStylesheets().add(location);
+			
+			settingsService.setSetting(Setting.JAVAFX_STYLE, name);
+		}
+	};
+	
+	
+	private Style[] styles = new Style[]{ blue, red };
 	private Logger logger = Logger.getLogger(FXStyle.class);
 	private SettingsService settingsService = SettingsServiceImpl.INSTANCE;
 	
-	private FXStyle(String name, String location) {
-		this.name = name;
-		this.location = location;
-		logger.info("Creating style " + name + ":" + location);
+	public Style[] getStyles() {
+		return styles;
 	}
-
-	@Override
-	public String getName() {
-		return name;
+	
+	public Style getStyle(String name) {
+		for(Style style : styles) 
+			if(style.getName().equals(name))
+				return style;
+		return blue;
 	}
-
-	@Override
-	public void apply() {
-		logger.info("Applying " + name + " style");
-		
-		FXApplicationFrame.INSTANCE.getContainer()
-			.getScene().getStylesheets().removeAll(FXApplicationFrame.INSTANCE.getContainer().getScene().getStylesheets());
-		
-		FXApplicationFrame.INSTANCE.getContainer().getScene().getStylesheets().add(location);
-		
-		settingsService.setSetting(Setting.JAVAFX_STYLE, location);
-		
-	}
-
+	
 }

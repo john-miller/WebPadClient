@@ -1,5 +1,6 @@
 package com.esg.webpad.style;
 
+import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -18,11 +19,11 @@ public enum SwingStyle {
 	
 	private Logger logger = Logger.getLogger(SwingStyle.class);
 	private SettingsService settingsService = SettingsServiceImpl.INSTANCE;
+	private Style[] styles;
 	
-	public Style[] getStyles() {
+	private SwingStyle() {
 		final LookAndFeelInfo[] infos = UIManager.getInstalledLookAndFeels();
-		Style[] styles = new Style[infos.length];
-		
+		styles = new Style[infos.length];
 		for(int i = 0; i < infos.length; i++) {
 			final LookAndFeelInfo info = infos[i];
 			styles[i] = new Style() {
@@ -49,7 +50,21 @@ public enum SwingStyle {
 			};
 		}
 		
+	}
+	
+	public Style[] getStyles() {
 		return styles;
+	}
+	
+	public Style getStyle(String location) {
+		LookAndFeel lookAndFeel = UIManager.getLookAndFeel();
+		for(Style style : styles) {
+			System.out.println(style.getName() + " " + lookAndFeel.getName());
+			if(style.getName().equals(lookAndFeel.getName()))
+				return style;
+		}
+		
+		return styles[0];
 	}
 		
 }
