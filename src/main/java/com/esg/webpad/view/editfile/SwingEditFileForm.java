@@ -2,7 +2,7 @@ package com.esg.webpad.view.editfile;
 
 import org.apache.log4j.Logger;
 
-import com.esg.webpad.file.NotePadFile;
+import com.esg.webpad.model.NotePadFile;
 
 public enum SwingEditFileForm implements EditFileForm {
 	

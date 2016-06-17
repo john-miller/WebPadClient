@@ -1,6 +1,6 @@
 package com.esg.webpad.view.savefile;
 
-import com.esg.webpad.file.NotePadFile;
+import com.esg.webpad.model.NotePadFile;
 
 public interface SaveFileForm {
 

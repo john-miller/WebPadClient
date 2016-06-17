@@ -1,4 +1,4 @@
-package com.esg.webpad.file;
+package com.esg.webpad.model;
 
 public class NotePadFile {
 

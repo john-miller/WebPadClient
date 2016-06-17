@@ -2,7 +2,7 @@ package com.esg.webpad.controller;
 
 import org.apache.log4j.Logger;
 
-import com.esg.webpad.file.NotePadFile;
+import com.esg.webpad.model.NotePadFile;
 import com.esg.webpad.service.UIService;
 import com.esg.webpad.view.savefile.FXSaveFileForm;
 import com.esg.webpad.view.savefile.SaveFileForm;

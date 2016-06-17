@@ -1,7 +1,7 @@
 package com.esg.webpad.service;
 
 import com.esg.webpad.exception.NotePadFileException;
-import com.esg.webpad.file.NotePadFile;
+import com.esg.webpad.model.NotePadFile;
 
 public interface NotePadFileService {
 

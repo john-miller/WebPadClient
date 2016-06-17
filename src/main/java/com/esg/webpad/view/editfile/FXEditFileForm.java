@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import com.esg.webpad.file.NotePadFile;
+import com.esg.webpad.model.NotePadFile;
 import com.esg.webpad.view.FXApplicationFrame;
 import com.esg.webpad.view.FXContentInjector;
 
