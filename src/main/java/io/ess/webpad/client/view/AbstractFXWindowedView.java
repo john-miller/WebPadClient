@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 
 import com.sun.javafx.application.PlatformImpl;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
