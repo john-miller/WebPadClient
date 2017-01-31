@@ -1,5 +1,10 @@
 package io.ess.webpad.client.service;
 
+/**
+ * Provides common JVM Utilities
+ * 
+ * @author Jonathan Miller
+ */
 public enum JVMService {
 	
 	INSTANCE;
