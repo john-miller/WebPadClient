@@ -1,4 +1,4 @@
-package com.ess.webpad.client.view;
+package io.ess.webpad.client.view;
 
 public interface WindowedView {
 

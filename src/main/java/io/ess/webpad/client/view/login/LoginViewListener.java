@@ -1,4 +1,4 @@
-package com.ess.webpad.client.view.login;
+package io.ess.webpad.client.view.login;
 
 /**
  * Allows the presenter to listen to the

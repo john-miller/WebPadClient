@@ -1,6 +1,6 @@
-package com.ess.webpad.client.service;
+package io.ess.webpad.client.service;
 
-import com.ess.webpad.client.domain.Account;
+import io.ess.webpad.client.domain.Account;
 
 /**
  * Contact defining functionality of the a security context

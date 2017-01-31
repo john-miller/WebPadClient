@@ -1,4 +1,4 @@
-package com.ess.webpad.client.view;
+package io.ess.webpad.client.view;
 
 import java.io.IOException;
 import java.net.URL;

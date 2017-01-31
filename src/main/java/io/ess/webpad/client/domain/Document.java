@@ -1,4 +1,4 @@
-package com.ess.webpad.client.domain;
+package io.ess.webpad.client.domain;
 
 import java.util.Date;
 

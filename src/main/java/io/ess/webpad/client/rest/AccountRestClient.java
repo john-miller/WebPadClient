@@ -1,4 +1,4 @@
-package com.ess.webpad.client.rest;
+package io.ess.webpad.client.rest;
 
 public interface AccountRestClient {
 

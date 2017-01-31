@@ -1,6 +1,6 @@
-package com.ess.webpad.client.view.editor;
+package io.ess.webpad.client.view.editor;
 
-import com.ess.webpad.client.domain.Document;
+import io.ess.webpad.client.domain.Document;
 
 public interface EditorViewListener {
 	

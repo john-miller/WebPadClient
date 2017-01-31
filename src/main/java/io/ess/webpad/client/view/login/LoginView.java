@@ -1,6 +1,6 @@
-package com.ess.webpad.client.view.login;
+package io.ess.webpad.client.view.login;
 
-import com.ess.webpad.client.view.WindowedView;
+import io.ess.webpad.client.view.WindowedView;
 
 /**
  * Defines the contract of a login view implementation

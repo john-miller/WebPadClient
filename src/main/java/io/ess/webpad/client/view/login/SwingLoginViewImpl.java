@@ -1,8 +1,8 @@
-package com.ess.webpad.client.view.login;
+package io.ess.webpad.client.view.login;
 
 import javax.swing.JPanel;
 
-import com.ess.webpad.client.view.AbstractSwingWindowedView;
+import io.ess.webpad.client.view.AbstractSwingWindowedView;
 
 /**
  * Swing implementation of the login view

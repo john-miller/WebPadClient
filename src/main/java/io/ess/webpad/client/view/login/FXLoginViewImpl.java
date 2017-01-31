@@ -1,7 +1,6 @@
-package com.ess.webpad.client.view.login;
+package io.ess.webpad.client.view.login;
 
-import com.ess.webpad.client.view.AbstractFXWindowedView;
-
+import io.ess.webpad.client.view.AbstractFXWindowedView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
