@@ -1,13 +1,19 @@
 package io.ess.webpad.client.controller;
 
+import io.ess.webpad.client.service.JVMService;
 import io.ess.webpad.client.view.WindowedViewListener;
+import io.ess.webpad.client.view.login.FXLoginViewImpl;
 import io.ess.webpad.client.view.login.LoginView;
 import io.ess.webpad.client.view.login.LoginViewListener;
 import io.ess.webpad.client.view.login.SwingLoginViewImpl;
 
 public class LoginControllerImpl implements LoginController {
 	
-	private LoginView loginView = new SwingLoginViewImpl();
+	/*
+	 * Attempts to load the preferred JavaFX view but will degrade to swing
+	 * if java fx is not supported
+	 */
+	private LoginView loginView = JVMService.INSTANCE.supportsJavaFX() ? new FXLoginViewImpl() : new SwingLoginViewImpl();
 	
 	public void login() {
 		
