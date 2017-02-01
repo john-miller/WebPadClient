@@ -1,6 +1,7 @@
 package io.ess.webpad.client.editor;
 
 import io.ess.webpad.client.domain.Document;
+import io.ess.webpad.client.view.WindowedView;
 
 /**
  * The editor view is responsible for providing
@@ -10,7 +11,7 @@ import io.ess.webpad.client.domain.Document;
  * @author John Miller
  *
  */
-public interface EditorView {
+public interface EditorView extends WindowedView {
 	
 	public void setDocument(Document document);
 	
