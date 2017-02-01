@@ -1,4 +1,4 @@
-package io.ess.webpad.client.view.login;
+package io.ess.webpad.client.login;
 
 import io.ess.webpad.client.view.WindowedView;
 

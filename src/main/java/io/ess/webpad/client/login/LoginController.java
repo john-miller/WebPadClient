@@ -1,4 +1,4 @@
-package io.ess.webpad.client.controller;
+package io.ess.webpad.client.login;
 
 public interface LoginController {
 

@@ -1,4 +1,4 @@
-package io.ess.webpad.client.view.login;
+package io.ess.webpad.client.login;
 
 import javax.swing.JPanel;
 

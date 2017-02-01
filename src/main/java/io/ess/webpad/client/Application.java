@@ -1,7 +1,7 @@
 package io.ess.webpad.client;
 
-import io.ess.webpad.client.controller.LoginController;
-import io.ess.webpad.client.controller.LoginControllerImpl;
+import io.ess.webpad.client.login.LoginController;
+import io.ess.webpad.client.login.LoginControllerImpl;
 
 public class Application {
 
