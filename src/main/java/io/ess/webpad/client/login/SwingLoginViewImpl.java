@@ -53,6 +53,10 @@ public class SwingLoginViewImpl extends AbstractSwingWindowedView implements Log
 		return pnlMain;
 	}
 
-
+	@Override
+	public void setLocationRelativeTo(double width, double height) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
