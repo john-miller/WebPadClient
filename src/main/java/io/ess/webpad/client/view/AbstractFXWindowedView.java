@@ -89,15 +89,27 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 	}
 	
 	@Override
-	public void setLocationRelativeTo(double height, double width) {
+	public void setLocationRelativeTo(double x, double y) {
 		PlatformImpl.runAndWait(new Runnable() {
 			@Override
 			public void run() {
-				
+				primaryStage.setX(x + (primaryStage.getWidth()/2));
+				primaryStage.setY(y + (primaryStage.getHeight()/2));
 			}
 		});
 	}
 
+	@Override
+	public void setDimension(double width, double height) {
+		PlatformImpl.runAndWait(new Runnable() {
+			@Override
+			public void run() {
+				primaryStage.setWidth(width);
+				primaryStage.setHeight(height);
+			}
+		});
+	}
+	
 	public void closeWindow() {
 		root.setVisible(true);
 	}
