@@ -7,6 +7,7 @@ public class Document {
 	private String name;
 	private String body;
 	private Date createdOn;
+	private Date lastUpdated;
 	
 	public String getName() {
 		return name;
@@ -25,6 +26,12 @@ public class Document {
 	}
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
+	}
+	public Date getLastUpdated() {
+		return lastUpdated;
+	}
+	public void setLastUpdated(Date lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 
 }
