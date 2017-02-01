@@ -1,4 +1,4 @@
-package io.ess.webpad.client.view.editor;
+package io.ess.webpad.client.editor;
 
 import io.ess.webpad.client.domain.Document;
 
