@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import com.sun.javafx.application.PlatformImpl;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -83,6 +84,16 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 				if(cssLocation != null)
 					scene.getStylesheets().add(cssLocation);
 				primaryStage.show();
+			}
+		});
+	}
+	
+	@Override
+	public void setLocationRelativeTo(double height, double width) {
+		PlatformImpl.runAndWait(new Runnable() {
+			@Override
+			public void run() {
+				
 			}
 		});
 	}
