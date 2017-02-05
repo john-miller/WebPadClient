@@ -41,25 +41,30 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 		 */
 		PlatformImpl.setImplicitExit(false);
 		
-		try {
-			URL fxmlURL = AbstractFXWindowedView.class.getResource(getFXMLDocument());
-			FXMLLoader loader = new FXMLLoader(fxmlURL);
-			loader.setController(this);
-			root = loader.load();
-		} catch (IOException e) {
-			root = new AnchorPane();
-		} catch(IllegalStateException e) {
-			root = new AnchorPane();
-		}
+		URL fxmlURL = AbstractFXWindowedView.class.getResource(getFXMLDocument());
+		FXMLLoader loader = new FXMLLoader(fxmlURL);
+		loader.setController(this);
+		
+		PlatformImpl.runAndWait(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					root = loader.load();
+					scene = new Scene(root, 250, 300);
+					primaryStage = new Stage();
+				} catch (IOException e) {
+					root = new AnchorPane();
+				} catch(IllegalStateException e) {
+					root = new AnchorPane();
+				}
+			}
+		});
 	}
 	
 	public void displayInWindow() {
 		PlatformImpl.runAndWait(new Runnable() {
 			@Override
 			public void run() {
-				if(scene == null)
-					scene = new Scene(root, 250, 300);
-				primaryStage = new Stage();
 				primaryStage.setScene(scene);
 				primaryStage.setAlwaysOnTop(true);
 				primaryStage.initModality(Modality.WINDOW_MODAL);
@@ -70,7 +75,7 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 					}
 				});
 				try {
-					URL logoUrl = AbstractFXWindowedView.class.getResource("/images/ICSsmalllogo.png");
+					URL logoUrl = AbstractFXWindowedView.class.getResource("/images/icon-web.png");
 					if(logoUrl != null) {
 						Image image = new Image(logoUrl.toExternalForm());
 						primaryStage.getIcons().add(image);
