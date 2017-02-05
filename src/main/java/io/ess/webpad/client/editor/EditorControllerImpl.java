@@ -1,16 +1,24 @@
 package io.ess.webpad.client.editor;
 
+import com.sun.istack.internal.logging.Logger;
+
 import io.ess.webpad.client.domain.Document;
 
 public enum EditorControllerImpl implements EditorController {
 	
 	INSTANCE;
 	
+	private Logger logger = Logger.getLogger(EditorControllerImpl.class);
+	
 	public static void main(String[] args) {
 		EditorControllerImpl.INSTANCE.openDocument(new Document());
 	}
 	
 	private EditorView editorView = new FXEditorViewImpl();
+	
+	private EditorControllerImpl() {
+		logger.info("Created Editor Controller Implementation");
+	}
 
 	@Override
 	public void openDocument(Document document) {
@@ -34,7 +42,7 @@ public enum EditorControllerImpl implements EditorController {
 				
 			}
 			@Override
-			public void open() {
+			public void openFile() {
 				
 			}
 			@Override
@@ -43,6 +51,10 @@ public enum EditorControllerImpl implements EditorController {
 			}
 			@Override
 			public void close() {
+				System.exit(0);
+			}
+			@Override
+			public void displayMyDocuments() {
 				
 			}
 		});

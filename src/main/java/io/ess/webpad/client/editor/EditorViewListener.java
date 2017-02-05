@@ -4,7 +4,9 @@ import io.ess.webpad.client.domain.Document;
 
 public interface EditorViewListener {
 	
-	public void open();
+	public void openFile();
+	
+	public void displayMyDocuments();
 	
 	public void save(Document document);
 	
