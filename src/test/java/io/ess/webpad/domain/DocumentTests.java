@@ -20,8 +20,8 @@ public class DocumentTests {
 	public void bodyTest() {
 		String  body = "test";
 		Document doc = new Document();
-		doc.setBody(body);
-		assertEquals(body, doc.getBody());
+		doc.setContent(body);
+		assertEquals(body, doc.getContent());
 	}
 	
 	@Test
