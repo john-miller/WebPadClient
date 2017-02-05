@@ -1,25 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="16.0" layoutY="213.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Login" />
-      <Label layoutX="16.0" layoutY="26.0" prefHeight="32.0" prefWidth="240.0" text="Username">
-         <font>
-            <Font name="Ebrima" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="16.0" layoutY="105.0" prefHeight="32.0" prefWidth="240.0" text="Password">
-         <font>
-            <Font name="Ebrima" size="22.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtUsername" layoutX="13.0" layoutY="69.0" prefHeight="25.0" prefWidth="240.0" />
-      <PasswordField fx:id="txtPassword" layoutX="14.0" layoutY="144.0" prefHeight="25.0" prefWidth="240.0" />
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HTMLEditor fx:id="editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="444.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem fx:id="mnuNew" mnemonicParsing="false" text="New Item" />
+                        <MenuItem fx:id="mnuOpen" mnemonicParsing="false" text="Open File" />
+                        <MenuItem fx:id="mnuMyDocuments" mnemonicParsing="false" text="My Documents" />
+                        <MenuItem fx:id="mnuSave" mnemonicParsing="false" text="Save" />
+                        <MenuItem fx:id="mnuSaveAs" mnemonicParsing="false" text="Save As" />
+                    <MenuItem fx:id="mnuClose" mnemonicParsing="false" text="Close" />
+                  </items>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="E" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="mnuAbout" mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1">
+               <menus>
+                  <Menu fx:id="mnuUserAccount" mnemonicParsing="false" text="Logged In As (Jonathan)">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Profile" />
+                        <MenuItem mnemonicParsing="false" text="Logout" />
+                    </items>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </GridPane>
+   </top>
+</BorderPane>
