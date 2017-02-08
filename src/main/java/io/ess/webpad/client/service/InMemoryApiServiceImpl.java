@@ -1,5 +1,6 @@
 package io.ess.webpad.client.service;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
 import io.ess.webpad.client.rest.HalRestTemplateBuilder;
 
 /**
@@ -25,7 +27,7 @@ public enum InMemoryApiServiceImpl implements ApiService {
 	private RestTemplate restTemplate = HalRestTemplateBuilder.build();
 	private final String baseUrl = System.getProperty("webpad.client.baseUrl");
 	private Link documents;
-	private Logger logger = Logger.getLogger(InMemoryApiServiceImpl.class);
+	private Logger logger = LogManager.getLogger(InMemoryApiServiceImpl.class);
 	
 	private InMemoryApiServiceImpl() {
 		MultiValueMap<String, String> options = new LinkedMultiValueMap<String, String>();

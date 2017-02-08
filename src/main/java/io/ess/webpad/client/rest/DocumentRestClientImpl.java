@@ -1,6 +1,7 @@
 package io.ess.webpad.client.rest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
@@ -26,7 +27,7 @@ import io.ess.webpad.client.service.InMemoryApiServiceImpl;
 public class DocumentRestClientImpl implements DocumentRestClient {
 	
 	private RestTemplate restTemplate = HalRestTemplateBuilder.build();
-	private Logger logger = Logger.getLogger(DocumentRestClientImpl.class);
+	private Logger logger = LogManager.getLogger(DocumentRestClientImpl.class);
 	
 	@Override
 	public PagedResources<Resource<Document>> getDocuments(int page, int size) {

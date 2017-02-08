@@ -1,6 +1,8 @@
 package io.ess.webpad.client.editor;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import io.ess.webpad.client.domain.Document;
 
@@ -8,7 +10,7 @@ public enum EditorControllerImpl implements EditorController {
 	
 	INSTANCE;
 	
-	private Logger logger = Logger.getLogger(EditorControllerImpl.class);
+	private Logger logger = LogManager.getLogger(EditorControllerImpl.class);
 	
 	public static void main(String[] args) {
 		EditorControllerImpl.INSTANCE.openDocument(new Document());
