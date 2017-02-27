@@ -22,6 +22,16 @@ public abstract class AbstractSwingWindowedView implements WindowedView {
 	public void closeWindow() {
 		frmMain.dispose();
 	}
+	
+	@Override
+	public boolean isVisible() {
+		return frmMain.isVisible();
+	}
+
+	@Override
+	public void setLocationRelativeTo(double width, double height) {
+		frmMain.setLocation((int)width, (int)height);
+	}
 
 	public void setWindowedViewListener(WindowedViewListener windowedViewListener) {
 		this.windowedViewListener = windowedViewListener;
