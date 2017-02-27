@@ -52,6 +52,29 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 					root = loader.load();
 					scene = new Scene(root, 250, 300);
 					primaryStage = new Stage();
+					primaryStage.setScene(scene);
+					primaryStage.setAlwaysOnTop(true);
+					primaryStage.initModality(Modality.WINDOW_MODAL);
+					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+						@Override
+						public void handle(WindowEvent event) {
+							
+						}
+					});
+					try {
+						URL logoUrl = AbstractFXWindowedView.class.getResource("/images/icon-web.png");
+						if(logoUrl != null) {
+							Image image = new Image(logoUrl.toExternalForm());
+							primaryStage.getIcons().add(image);
+						}
+					}
+					catch(IllegalArgumentException e) {
+						
+					}
+					
+					String cssLocation = getCSSLocation();
+					if(cssLocation != null)
+						scene.getStylesheets().add(cssLocation);
 				} catch (IOException e) {
 					root = new AnchorPane();
 				} catch(IllegalStateException e) {
@@ -65,29 +88,6 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 		PlatformImpl.runAndWait(new Runnable() {
 			@Override
 			public void run() {
-				primaryStage.setScene(scene);
-				primaryStage.setAlwaysOnTop(true);
-				primaryStage.initModality(Modality.WINDOW_MODAL);
-				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-					@Override
-					public void handle(WindowEvent event) {
-						
-					}
-				});
-				try {
-					URL logoUrl = AbstractFXWindowedView.class.getResource("/images/icon-web.png");
-					if(logoUrl != null) {
-						Image image = new Image(logoUrl.toExternalForm());
-						primaryStage.getIcons().add(image);
-					}
-				}
-				catch(IllegalArgumentException e) {
-					
-				}
-				
-				String cssLocation = getCSSLocation();
-				if(cssLocation != null)
-					scene.getStylesheets().add(cssLocation);
 				primaryStage.show();
 			}
 		});
@@ -116,9 +116,19 @@ public abstract class AbstractFXWindowedView implements WindowedView {
 	}
 	
 	public void closeWindow() {
-		root.setVisible(true);
+		PlatformImpl.runAndWait(new Runnable() {
+			@Override
+			public void run() {
+				primaryStage.hide();
+			}
+		});
 	}
 				
+	@Override
+	public boolean isVisible() {
+		return primaryStage.isShowing();
+	}
+
 	public void setWindowedViewListener(WindowedViewListener windowedViewListener) {
 		this.windowedViewListener = windowedViewListener;
 	}
